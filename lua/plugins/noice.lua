@@ -1,4 +1,3 @@
--- lua/plugins/noice.lua
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
@@ -10,13 +9,13 @@ return {
     -- LSP configuration
     lsp = {
       progress = {
-        enabled = false, -- Disable LSP progress (can be noisy)
+        enabled = true,
       },
       hover = {
-        enabled = true, -- Enhanced hover docs
+        enabled = true,
       },
       signature = {
-        enabled = true, -- Function signature help
+        enabled = true,
         auto_open = {
           enabled = true,
           trigger = true,
@@ -31,7 +30,6 @@ return {
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,
-        ["cmp.entry.get_documentation"] = true,
       },
     },
 
@@ -60,12 +58,17 @@ return {
       view = "cmdline_popup", -- cmdline_popup or cmdline
       opts = {}, -- Options for cmdline view
       format = {
-        cmdline = { pattern = "^:", icon = "", lang = "vim" },
-        search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
-        search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
-        filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
-        lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
-        help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
+        cmdline = { pattern = "^:", icon = " ", lang = "vim", title = "{  }" },
+        search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex", title = "{  }" },
+        search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex", title = "{  }" },
+        filter = { pattern = "^:%s*!", icon = "$", lang = "bash", title = "{ #! }" },
+        lua = {
+          pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
+          icon = "󰢱 ",
+          lang = "lua",
+          title = "{  }",
+        },
+        help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖 ", title = "{  }" },
         input = {}, -- Used by input()
       },
     },
@@ -87,7 +90,7 @@ return {
     views = {
       cmdline_popup = {
         position = {
-          row = 5,
+          row = 1,
           col = "50%",
         },
         size = {

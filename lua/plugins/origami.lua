@@ -14,7 +14,7 @@ return {
 
     local fold_util = require "utils.code_folds"
 
-    vim.keymap.set("n", "<CR>", "za", { noremap = true, silent = true })
+    vim.keymap.set("n", "za", "za", { noremap = true, silent = true })
     vim.keymap.set("n", "zp", fold_util.goto_previous_fold, { noremap = true, silent = true })
     vim.keymap.set("n", "zn", "zj", { noremap = true, silent = true })
 

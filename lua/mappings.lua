@@ -70,7 +70,7 @@ map("n", "<leader>?", function()
 end, { desc = "Buffer Local Keymaps (which-key)" })
 
 -- FocusMode
-map("n", "<leader>zf", "<cmd>FocusMode<cr>", { desc = "Toggle Focus Mode" })
+map("n", "<leader>zf", "<cmd>Twilight<cr>", { desc = "Toggle Focus Mode" })
 
 -- ZenMode
 map("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Toggle Zen Mode" })

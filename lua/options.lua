@@ -13,12 +13,14 @@ o.laststatus = 3 -- Global statusline
 o.showmode = false -- Don't show mode in command line
 o.cmdheight = 1 -- Command line height
 o.termguicolors = true -- Enable 24-bit RGB colors
+o.shell = "/bin/bash"
+
 o.pumheight = 10 -- Popup menu height
 o.pumblend = 10 -- Popup menu transparency
 
 o.cursorline = true -- Highlight current line
 -- o.cursorlineopt = "number"          -- Only highlight line number
--- o.cursorlineopt = "both"         -- Highlight both line and number
+o.cursorlineopt = "both" -- Highlight both line and number
 o.scrolloff = 10 -- Keep 10 lines above/below cursor
 o.sidescrolloff = 8 -- Keep 8 columns left/right of cursor
 o.wrap = false -- Don't wrap long lines
@@ -66,7 +68,7 @@ o.undofile = true -- Enable persistent undo
 o.updatetime = 4000 -- Faster completion and gitsigns
 
 -- Undo directory setup
-local undodir = "~/.local/share/nvim/undodir"
+local undodir = "~/.local/share/nvimrc/undodir"
 opt.undodir = vim.fn.expand(undodir)
 local undodir_path = vim.fn.expand(undodir)
 if vim.fn.isdirectory(undodir_path) == 0 then

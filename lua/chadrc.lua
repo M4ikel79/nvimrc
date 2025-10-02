@@ -1,7 +1,7 @@
 local options = {
 
   base46 = {
-    theme = "blossom_light", -- default theme
+    theme = "dracula-pro", -- default theme
     hl_add = {},
     hl_override = {
       Comment = { italic = true },
@@ -12,7 +12,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "blossom_light", "blossom_light" },
+    theme_toggle = { "tokyonight", "tokyonight" },
   },
 
   ui = {
@@ -45,9 +45,9 @@ local options = {
       bufwidth = 21,
     },
   },
+
   nvdash = {
     load_on_startup = true,
-
     header = {
       "                                                                     ",
       "       ████ ██████           █████      ██                     ",
@@ -58,37 +58,23 @@ local options = {
       "  ███████████ ███    ███ █████████ █████ █████ ████ █████  ",
       " ██████  █████████████████████ ████ █████ █████ ████ ██████ ",
     },
-
     buttons = {
       { txt = "󰈞  Find Files", keys = "f", cmd = "Telescope find_files" },
       { txt = "󰄉  Recent Files", keys = "r", cmd = "Telescope oldfiles" },
       { txt = "󰈭  Find Word", keys = "w", cmd = "Telescope live_grep" },
       { txt = "󰈔  New File", keys = "n", cmd = "enew" },
       { txt = "󰙅  File Explorer", keys = "e", cmd = "NvimTreeToggle" },
-      { txt = "  KeyMaps", keys = "m", cmd = "Telescope keymaps" },
+      { txt = "󰦄  KeyMaps", keys = "k", cmd = "Telescope keymaps" },
       {
-        txt = "󰇘  Terminal",
+        txt = "  Terminal",
         keys = "t",
-        cmd = ":lua require('nvchad.term').toggle({ pos = 'float', id = 'floatTerm' })<CR>",
-      },
-      { txt = "󰦛  Themes", keys = "h", cmd = ":lua require('nvchad.themes').open()<CR>" },
+        cmd = "lua require('nvchad.term').toggle({ pos = 'float', id = 'floatTerm' })",
+      }, -- Fixed
+      { txt = "  Themes", keys = "h", cmd = "lua require('nvchad.themes').open()" }, -- Fixed
       { txt = "󰒓  Config", keys = "c", cmd = "e ~/.config/nvim/init.lua" },
-      { txt = "󰊳  Mason", keys = "m", cmd = "Mason" },
+      { txt = "󰢛  Mason", keys = "m", cmd = "Mason" },
       { txt = "󰒲  Lazy", keys = "l", cmd = "Lazy" },
       { txt = "󰅚  Quit", keys = "q", cmd = "qa" },
-      -- { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
-
-      -- {
-      --   txt = function()
-      --     local stats = require("lazy").stats()
-      --     local ms = math.floor(stats.startuptime) .. " ms"
-      --     return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
-      --   end,
-      --   hl = "NvDashFooter",
-      --   no_gap = true,
-      -- },
-
-      -- { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
     },
   },
 
@@ -110,7 +96,7 @@ local options = {
 
   cheatsheet = {
     theme = "grid", -- simple/grid
-    -- excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
+    excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
   },
 
   mason = { pkgs = {}, skip = {} },

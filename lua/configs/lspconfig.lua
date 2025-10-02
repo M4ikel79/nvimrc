@@ -3,7 +3,7 @@ local servers = { "html", "cssls", "emmet_ls" }
 
 -- Common capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+-- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- Common on_attach function
 local on_attach = function(client, bufnr)

@@ -18,15 +18,15 @@ return {
     winblend = 10,
     -- Icons for different levels
     icons = {
-      ERROR = "",
-      WARN = "",
-      INFO = "",
-      DEBUG = "",
-      TRACE = "✎",
+      ERROR = " ",
+      WARN = " ",
+      INFO = " ",
+      DEBUG = " ",
+      TRACE = "✎ ",
     },
 
     -- Render style
-    render = "compact", -- default, minimal, simple, compact
+    render = "default", -- default, minimal, simple, compact
 
     -- Notification position
     top_down = true, -- false = bottom-up
@@ -36,9 +36,16 @@ return {
   },
   config = function(_, opts)
     local notify = require "notify"
+    local render_markdown = require "render-markdown"
+
     notify.setup(opts)
 
-    -- Set as default notify function
-    vim.notify = notify
+    -- Override vim.notify to render markdown
+    vim.notify = function(msg, ...)
+      if type(msg) == "string" then
+        msg = render_markdown.render(msg)
+      end
+      notify(msg, ...)
+    end
   end,
 }

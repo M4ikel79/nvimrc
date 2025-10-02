@@ -3,7 +3,10 @@ return {
   version = false,
   event = "VimEnter",
   config = function()
-    require("mini.cursorword").setup()
+    require("mini.cursorword").setup {
+      delay = 50, -- faster highlight
+      silent = true, -- don’t show errors if highlight groups are missing
+    }
     require("mini.indentscope").setup {
       draw = {
         delay = 5, -- Delay (in ms) between event and start of drawing scope indicator
@@ -27,7 +30,6 @@ return {
         update_n_lines = "gsn",
       },
     }
-    require("mini.comment").setup()
     require("mini.move").setup {
       mappings = {
         -- Move visual selection
