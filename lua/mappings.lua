@@ -55,6 +55,39 @@ map("n", "[c", function()
   require("treesitter-context").go_to_context(vim.v.count1)
 end, { desc = "Jump to Context" })
 
+map("n", "<leader>sk", "<cmd>ShowkeysToggle<CR>", { desc = "Toggle Showkeys" })
+
+-- Lazygit
+map("n", "<leader>gg", "<cmd>LazyGit<CR>", opts) -- main entry
+map("n", "<leader>gt", "<cmd>tabnew | LazyGit<CR>", opts) -- open lazygit in a new tab
+map("n", "<leader>gl", "<cmd>LazyGitLog<CR>", opts) -- git log (if you use lazygit.nvim extension)
+map("n", "<leader>gf", "<cmd>LazyGitFilterCurrentFile<CR>", opts) -- log for current file
+
+-- map("n", "<leader>tt", "<cmd>FloatermToggle<CR>", { desc = "Terminal (tab)", silent = true })
+-- Minty
+-- map("n", "<leader>ms", "<cmd>Shades<CR>", vim.tbl_extend("force", opts, { desc = "Minty Shades" }))
+-- map("n", "<leader>mh", "<cmd>Huefy<CR>", vim.tbl_extend("force", opts, { desc = "Minty Huefy" }))
+
+-- Volt
+-- map(
+--   "n",
+--   "<leader>vv",
+--   "<cmd>lua require('volt').pick()<CR>",
+--   vim.tbl_extend("force", opts, { desc = "Volt Pick Theme" })
+-- )
+-- map(
+--   "n",
+--   "<leader>vn",
+--   "<cmd>lua require('volt').next()<CR>",
+--   vim.tbl_extend("force", opts, { desc = "Volt Next Theme" })
+-- )
+-- map(
+--   "n",
+--   "<leader>vp",
+--   "<cmd>lua require('volt').prev()<CR>",
+--   vim.tbl_extend("force", opts, { desc = "Volt Prev Theme" })
+-- )
+
 -- Trouble
 map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
 map("n", "<leader>xq", "<cmd>Trouble quickfix toggle<cr>", { desc = "Quickfix (Trouble)" })

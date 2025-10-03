@@ -1,7 +1,7 @@
 local options = {
 
   base46 = {
-    theme = "dracula-pro", -- default theme
+    theme = "bearded-arc", -- default theme
     hl_add = {},
     hl_override = {
       Comment = { italic = true },
