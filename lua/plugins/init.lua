@@ -8,6 +8,7 @@ return {
         "css-lsp",
         "emmet-ls",
         "rust-analyzer",
+        "lua-language-server",
         "jdtls",
         "typescript-language-server",
         "pyright",
@@ -29,22 +30,6 @@ return {
     config = function()
       require "configs.lspconfig"
     end,
-  },
-
-  {
-    import = "nvchad.blink.lazyspec",
-    opts = {
-      sources = {
-        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-        providers = {
-          lazydev = {
-            name = "LazyDev",
-            module = "lazydev.integrations.blink",
-            score_offset = 100,
-          },
-        },
-      },
-    },
   },
 
   {
@@ -96,8 +81,8 @@ return {
   },
 
   -- REQUIRED PLUGINS
-   { import = "plugins.coding" },
-   { import = "plugins.editor" },
-   { import = "plugins.tools" },
-   { import = "plugins.ui" },
+  { import = "plugins.coding" },
+  { import = "plugins.editor" },
+  { import = "plugins.tools" },
+  { import = "plugins.ui" },
 }
