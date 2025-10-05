@@ -13,8 +13,8 @@ return {
     width = 50,
     icons = true,
     mode = "document_diagnostics",
-    fold_open = "",
-    fold_closed = "",
+    fold_open = "",
+    fold_closed = "",
     group = true,
     padding = true,
     action_keys = {
