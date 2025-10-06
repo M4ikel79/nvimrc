@@ -1,10 +1,10 @@
--- lua/menus/markdown.lua
--- Markdown and Obsidian-specific menu
+-- ============================================================================
+-- FILE: lua/menus/markdown.lua
+-- DESCRIPTION: Markdown and Obsidian menu
+-- ============================================================================
 
 return {
-  -- ============================================================================
   -- Obsidian Notes
-  -- ============================================================================
   {
     name = " New Note",
     cmd = "ObsidianNew",
@@ -20,56 +20,19 @@ return {
     cmd = "ObsidianSearch",
     rtxt = "<leader>os",
   },
-  {
-    name = " Open in Obsidian",
-    cmd = "ObsidianOpen",
-    rtxt = "<leader>oo",
-  },
 
   { name = "separator" },
 
-  -- ============================================================================
   -- Daily Notes
-  -- ============================================================================
   {
     name = " Today's Note",
     cmd = "ObsidianToday",
     rtxt = "<leader>ot",
   },
-  {
-    name = " Yesterday's Note",
-    cmd = "ObsidianYesterday",
-    rtxt = "<leader>oy",
-  },
 
   { name = "separator" },
 
-  -- ============================================================================
-  -- Links & References
-  -- ============================================================================
-  {
-    name = " Show Backlinks",
-    cmd = "ObsidianBacklinks",
-    rtxt = "<leader>ob",
-  },
-  {
-    name = " Show Links",
-    cmd = "ObsidianLinks",
-    rtxt = "<leader>ol",
-  },
-  {
-    name = " Toggle Checkbox",
-    cmd = function()
-      require("obsidian").util.toggle_checkbox()
-    end,
-    rtxt = "<leader>oc",
-  },
-
-  { name = "separator" },
-
-  -- ============================================================================
   -- Markdown Preview
-  -- ============================================================================
   {
     name = " Preview",
     cmd = "MarkdownPreview",
@@ -80,38 +43,20 @@ return {
     cmd = "MarkdownPreviewStop",
     rtxt = "<leader>ms",
   },
-  {
-    name = " Toggle Preview",
-    cmd = "MarkdownPreviewToggle",
-    rtxt = "<leader>mt",
-  },
 
   { name = "separator" },
 
-  -- ============================================================================
-  -- Workspace
-  -- ============================================================================
-  {
-    name = " Switch Workspace",
-    cmd = "ObsidianWorkspace",
-    rtxt = "<leader>ow",
-  },
-
-  { name = "separator" },
-
-  -- ============================================================================
   -- Standard Actions
-  -- ============================================================================
   {
     name = " Format",
     cmd = function()
-      require("conform").format { async = true, lsp_fallback = true }
+      local ok, conform = pcall(require, "conform")
+      if ok then
+        conform.format { async = true, lsp_fallback = true }
+      else
+        vim.lsp.buf.format()
+      end
     end,
     rtxt = "<leader>cf",
-  },
-  {
-    name = " Save",
-    cmd = "write",
-    rtxt = "<C-s>",
   },
 }

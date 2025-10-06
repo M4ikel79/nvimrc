@@ -1,31 +1,9 @@
--- lua/menus/default.lua
--- Default context menu (right-click in normal buffers)
+-- ============================================================================
+-- FILE: lua/menus/default.lua
+-- DESCRIPTION: Default context menu (right-click fallback)
+-- ============================================================================
 
 return {
-  -- ============================================================================
-  -- Quick Actions
-  -- ============================================================================
-  {
-    name = " Copy Line",
-    cmd = "normal! yy",
-    rtxt = "yy",
-  },
-  {
-    name = " Copy Content",
-    cmd = "%y+",
-    rtxt = "%y+",
-  },
-  {
-    name = " Paste",
-    cmd = "normal! p",
-    rtxt = "p",
-  },
-
-  { name = "separator" },
-
-  -- ============================================================================
-  -- Code Actions (if LSP available)
-  -- ============================================================================
   {
     name = "󰌵 Code Action",
     cmd = vim.lsp.buf.code_action,
@@ -39,16 +17,18 @@ return {
   {
     name = " Format",
     cmd = function()
-      require("conform").format { async = true, lsp_fallback = true }
+      local ok, conform = pcall(require, "conform")
+      if ok then
+        conform.format { async = true, lsp_fallback = true }
+      else
+        vim.lsp.buf.format()
+      end
     end,
     rtxt = "<leader>cf",
   },
 
   { name = "separator" },
 
-  -- ============================================================================
-  -- Navigation
-  -- ============================================================================
   {
     name = " Go to Definition",
     cmd = vim.lsp.buf.definition,
@@ -59,48 +39,32 @@ return {
     cmd = "Telescope lsp_references",
     rtxt = "gr",
   },
+
+  { name = "separator" },
+
   {
-    name = " Hover",
-    cmd = vim.lsp.buf.hover,
-    rtxt = "K",
+    name = " Copy Line",
+    cmd = "normal! yy",
+    rtxt = "yy",
+  },
+  {
+    name = " Copy Content",
+    cmd = "%y+",
+    rtxt = "%y+",
   },
 
   { name = "separator" },
 
-  -- ============================================================================
-  -- Search
-  -- ============================================================================
   {
     name = " Find Files",
     cmd = "Telescope find_files",
     rtxt = "<leader>ff",
   },
   {
-    name = " Live Grep",
-    cmd = "Telescope live_grep",
-    rtxt = "<leader>fw",
-  },
-
-  { name = "separator" },
-
-  -- ============================================================================
-  -- More Actions
-  -- ============================================================================
-  {
     name = " Open Terminal",
     cmd = function()
       require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
     end,
     rtxt = "<leader>tf",
-  },
-  {
-    name = " Toggle Explorer",
-    cmd = "NvimTreeToggle",
-    rtxt = "<C-n>",
-  },
-  {
-    name = " Save File",
-    cmd = "write",
-    rtxt = "<C-s>",
   },
 }
