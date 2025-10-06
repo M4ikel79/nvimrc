@@ -1,7 +1,7 @@
 -- lua/plugins/trouble.lua
 return {
   "folke/trouble.nvim",
-  version = "v1.*",
+  -- version = "v1.*",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim",
@@ -11,7 +11,7 @@ return {
     position = "bottom",
     height = 10,
     width = 50,
-    icons = true,
+    -- icons = true,
     mode = "document_diagnostics",
     fold_open = "",
     fold_closed = "",

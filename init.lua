@@ -34,5 +34,5 @@ require "autocmds"
 
 -- schedule keymap loading for plugin availability
 vim.schedule(function()
-  require "mappings"
+  require "keymaps"
 end)

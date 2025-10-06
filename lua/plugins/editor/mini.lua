@@ -46,6 +46,7 @@ return {
       },
     }
 
+    require("mini.keymap").setup()
     require("mini.align").setup()
     require("mini.ai").setup()
     require("mini.splitjoin").setup()

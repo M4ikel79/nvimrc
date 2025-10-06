@@ -1,6 +1,6 @@
 local options = {
   base46 = {
-    theme = "tokyonight",
+    theme = "ayu_dark",
     hl_add = {},
     hl_override = {
       Comment = { italic = true },
@@ -11,7 +11,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "tokyodark", "tokyonight" },
+    theme_toggle = { "tokyodark", "ayu_dark" },
   },
 
   ui = {

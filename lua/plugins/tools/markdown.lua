@@ -138,7 +138,10 @@ return {
       preset = "obsidian",
       file_types = { "markdown", "quarto", "codecompanion" },
       render_modes = { "n", "c", "t" },
-
+      completions = {
+        -- coq = { enabled = true },
+        lsp = { enabled = true },
+      },
       heading = {
         enabled = true,
         sign = true,
