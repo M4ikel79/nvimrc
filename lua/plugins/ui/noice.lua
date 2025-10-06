@@ -55,7 +55,7 @@ return {
           lang = "lua",
           title = "{  }",
         },
-        help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖 ", title = "{  }" },
+        help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖 ", title = "{  }" },
         input = {},
       },
     },

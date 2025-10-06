@@ -92,10 +92,10 @@ map("n", "<A-c>", "<cmd>Bdelete<cr>", { desc = "Close buffer" })
 map("n", "<C-p>", "<cmd>Telescope buffers<cr>", { desc = "Buffer picker" })
 
 -- Quick buffer access (Alt+1 through Alt+9)
-for i = 1, 9 do
-  map("n", "<A-" .. i .. ">", function()
-    buf_utils.goto_buffer(i)
-  end, { desc = "Go to buffer " .. i })
+for i = 1, 9, 1 do
+  vim.keymap.set("n", string.format("<A-%s>", i), function()
+    vim.api.nvim_set_current_buf(vim.t.bufs[i])
+  end)
 end
 map("n", "<A-0>", buf_utils.goto_last_buffer, { desc = "Last buffer" })
 

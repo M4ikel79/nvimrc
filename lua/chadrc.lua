@@ -1,6 +1,6 @@
 local options = {
   base46 = {
-    theme = "ayu_dark",
+    theme = "material-deep-ocean",
     hl_add = {},
     hl_override = {
       Comment = { italic = true },
@@ -11,13 +11,13 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "tokyodark", "ayu_dark" },
+    theme_toggle = { "blossom_light", "material-deep-ocean" },
   },
 
   ui = {
     cmp = {
       icons_left = false,
-      style = "default",
+      style = "flat_dark",
       abbr_maxwidth = 60,
       format_colors = { lsp = true, icon = "󱓻" },
     },
@@ -54,16 +54,17 @@ local options = {
       " ██████  █████████████████████ ████ █████ █████ ████ ██████ ",
     },
     buttons = {
-      { txt = "󰈞  Find Files", keys = "f", cmd = "Telescope find_files" },
-      { txt = "  Recent Files", keys = "r", cmd = "Telescope oldfiles" },
-      { txt = "  Find Word", keys = "w", cmd = "Telescope live_grep" },
+      { txt = "󰥨  Find Files", keys = "f", cmd = "Telescope find_files" },
+      { txt = "  Recent Files", keys = "r", cmd = "Telescope oldfiles" },
+      { txt = "󰱼  Find Word", keys = "w", cmd = "Telescope live_grep" },
       { txt = "  New File", keys = "n", cmd = "enew" },
       { txt = "󰙅 File Explorer", keys = "e", cmd = "NvimTreeToggle" },
       { txt = "󰍐 KeyMaps", keys = "k", cmd = "Telescope keymaps" },
       {
         txt = "  Terminal",
         keys = "t",
-        cmd = "lua require('nvchad.term').toggle({ pos = 'float', id = 'floatTerm' })",
+        -- cmd = "lua require('nvchad.term').toggle({ pos = 'float', id = 'floatTerm' })",
+        cmd = "FloatermToggle",
       },
       { txt = " Themes", keys = "h", cmd = "lua require('nvchad.themes').open()" },
       { txt = "󰒓  Config", keys = "c", cmd = "e ~/.config/nvimrc/init.lua" },
@@ -76,7 +77,7 @@ local options = {
   term = {
     base46_colors = true,
     winopts = { number = false, relativenumber = false },
-    sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
+    sizes = { sp = 0.3, vsp = 0.5, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
     float = {
       relative = "editor",
       row = 0.3,
