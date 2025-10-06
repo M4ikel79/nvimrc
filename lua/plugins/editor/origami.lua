@@ -5,7 +5,7 @@ return {
   opts = {
     foldtext = {
       lineCount = {
-        template = " %d",
+        template = "  %d",
       },
     },
   },

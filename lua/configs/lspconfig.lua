@@ -56,6 +56,11 @@ local servers = {
       html = { options = { ["bem.enabled"] = true } },
     },
   },
+  eslint = {
+    settings = {
+      workingDirectory = { mode = "auto" },
+    },
+  },
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {

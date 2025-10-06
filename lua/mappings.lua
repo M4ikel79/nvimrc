@@ -6,19 +6,24 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+-- In lua/mappings.lua, replace quit mappings:
+map("n", "<leader>q", "<cmd>Q<CR>", { desc = "Safe Quit" })
+map("n", "<leader>Q", "<cmd>q!<CR>", { desc = "Force Quit" })
+map("n", "<leader>qq", "<cmd>qa<CR>", { desc = "Quit All" })
+
 -- Smart Tab (expression mapping for multi-step behavior)
 map("i", "<Tab>", function()
   -- Check completion menu
   if vim.fn.pumvisible() == 1 then
     return "<C-n>"
   end
-  
+
   -- Check if cursor is in whitespace
   local col = vim.fn.col "." - 1
   if col == 0 or vim.fn.getline("."):sub(col, col):match "%s" then
     return "<Tab>"
   end
-  
+
   return "<Tab>"
 end, { expr = true, desc = "Smart Tab" })
 
@@ -226,11 +231,6 @@ map("n", "<M-,>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Width" })
 
 -- Terminal
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "Exit Terminal Mode" })
-map("n", "<leader>h", "<cmd>Sterm<cr>", { desc = "Horizontal Term" })
-map("n", "<leader>v", "<cmd>Vterm<cr>", { desc = "Vertical Term" })
-map({ "n", "t" }, "<A-v>", "<cmd>Vterm<cr>", { desc = "Vertical Term" })
-map({ "n", "t" }, "<A-h>", "<cmd>Sterm<cr>", { desc = "Horizontal Term" })
-map({ "n", "t" }, "<A-i>", "<cmd>Fterm<cr>", { desc = "Floating Term" })
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Close Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 

@@ -7,6 +7,7 @@ return {
         "html-lsp",
         "css-lsp",
         "emmet-ls",
+        "eslint-lsp",
         "rust-analyzer",
         "lua-language-server",
         "jdtls",
