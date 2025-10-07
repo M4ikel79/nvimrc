@@ -1,32 +1,47 @@
 -- lua/menus/webdev.lua
--- Web development menu (HTML, CSS, JavaScript, TypeScript, React)
+-- Web development tools menu (HTML, CSS, JS, TS, React)
 
 return {
-  -- Live preview
   {
-    name = " Start Live Server",
-    cmd = "LiveServerStart",
-    rtxt = "<leader>ls",
-  },
-  {
-    name = " Stop Live Server",
-    cmd = "LiveServerStop",
-    rtxt = "<leader>lS",
+    name = " Web Development",
+    title = true,
+    hl = "ExCyan",
   },
 
   { name = "separator" },
 
-  -- Code actions
+  -- Live Server Controls
   {
-    name = "󰌵 Code Action",
+    name = " Live Server",
+    items = {
+      {
+        name = "Start Server",
+        cmd = "LiveServerStart",
+        rtxt = "<leader>ls",
+      },
+      {
+        name = "Stop Server",
+        cmd = "LiveServerStop",
+        rtxt = "<leader>lS",
+      },
+    },
+  },
+
+  { name = "separator" },
+
+  -- Code Actions
+  {
+    name = "󰌵 Code Actions",
     cmd = vim.lsp.buf.code_action,
     rtxt = "<leader>ca",
   },
+
   {
     name = " Rename",
     cmd = vim.lsp.buf.rename,
     rtxt = "<leader>rn",
   },
+
   {
     name = " Format",
     cmd = function()
@@ -39,19 +54,20 @@ return {
 
   -- Navigation
   {
-    name = " Definition",
+    name = " Goto Definition",
     cmd = vim.lsp.buf.definition,
     rtxt = "gd",
   },
+
   {
-    name = " References",
+    name = " Show References",
     cmd = "Telescope lsp_references",
     rtxt = "gr",
   },
 
   { name = "separator" },
 
-  -- Browser tools
+  -- Browser Tools
   {
     name = " Open in Browser",
     cmd = function()
@@ -72,11 +88,76 @@ return {
 
   { name = "separator" },
 
-  -- Quick actions
+  -- Component Tools (for React/Vue/Svelte)
+  {
+    name = " Component Tools",
+    items = {
+      {
+        name = "Go to Component Definition",
+        cmd = vim.lsp.buf.definition,
+        rtxt = "gd",
+      },
+      {
+        name = "Find Component Usage",
+        cmd = "Telescope lsp_references",
+        rtxt = "gr",
+      },
+      {
+        name = "Rename Component",
+        cmd = vim.lsp.buf.rename,
+        rtxt = "<leader>rn",
+      },
+    },
+  },
+
+  { name = "separator" },
+
+  -- Package Management
+  {
+    name = "󰯁 Package Scripts",
+    items = {
+      {
+        name = "Run Dev Server",
+        cmd = function()
+          require("nvchad.term").send("npm run dev", "horizontal")
+        end,
+      },
+      {
+        name = "Run Build",
+        cmd = function()
+          require("nvchad.term").send("npm run build", "horizontal")
+        end,
+      },
+      {
+        name = "Run Tests",
+        cmd = function()
+          require("nvchad.term").send("npm test", "horizontal")
+        end,
+      },
+      {
+        name = "Install Dependencies",
+        cmd = function()
+          require("nvchad.term").send("npm install", "horizontal")
+        end,
+      },
+    },
+  },
+
+  { name = "separator" },
+
+  -- Color Tools
   {
     name = " Color Picker",
     cmd = function()
       require("minty.huefy").open()
+    end,
+    rtxt = "<leader>ch",
+  },
+
+  {
+    name = " ESLint Fix",
+    cmd = function()
+      vim.cmd "!eslint --fix %"
     end,
   },
 }

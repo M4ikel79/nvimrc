@@ -1,6 +1,5 @@
 -- lua/plugins/ui/menu.lua
--- Smart Context-Aware Menu System
--- Philosophy: Show only what's needed, when it's needed
+-- Smart context-aware menu system plugin configuration
 
 return {
   {
@@ -11,7 +10,7 @@ return {
     "nvzone/menu",
     lazy = true,
     keys = {
-      -- Single intuitive binding: Right-click or Ctrl+Space
+      -- Context-aware menu
       {
         "<C-Space>",
         function()
@@ -19,6 +18,35 @@ return {
         end,
         mode = { "n", "v" },
         desc = "Context menu",
+      },
+      -- Quick access to specific menus
+      {
+        "<leader>m",
+        function()
+          require("configs.menu_manager").open_context_menu()
+        end,
+        desc = "Context menu",
+      },
+      {
+        "<leader>md",
+        function()
+          require("configs.menu_manager").open_debug_menu()
+        end,
+        desc = "Debug menu",
+      },
+      {
+        "<leader>mg",
+        function()
+          require("configs.menu_manager").open_git_menu()
+        end,
+        desc = "Git menu",
+      },
+      {
+        "<leader>mc",
+        function()
+          require("configs.menu_manager").open_colors_menu()
+        end,
+        desc = "Colors menu",
       },
     },
     config = function()
@@ -33,6 +61,8 @@ return {
         end
 
         vim.cmd.exec '"normal! \\<RightMouse>"'
+
+        -- Open context-aware menu at mouse position
         require("configs.menu_manager").open_context_menu { mouse = true }
       end, { desc = "Context menu" })
     end,
