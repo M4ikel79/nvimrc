@@ -1,6 +1,6 @@
 local options = {
   base46 = {
-    theme = "material-deep-ocean",
+    theme = "catppuccin",
     hl_add = {},
     hl_override = {
       Comment = { italic = true },
@@ -11,7 +11,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "blossom_light", "material-deep-ocean" },
+    theme_toggle = { "blossom_light", "catppuccin" },
   },
 
   ui = {

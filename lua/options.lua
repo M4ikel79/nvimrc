@@ -19,6 +19,8 @@ o.cursorlineopt = "both"
 o.scrolloff = 10
 o.sidescrolloff = 8
 o.wrap = false
+-- o.linebreak = true
+-- o.breakindent = true
 o.colorcolumn = "100"
 o.showmatch = false
 

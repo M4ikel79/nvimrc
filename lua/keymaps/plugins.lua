@@ -89,8 +89,8 @@ map("n", "<leader>aa", "<cmd>CodeCompanionActions<cr>", { desc = "AI actions" })
 map("v", "<leader>aa", "<cmd>CodeCompanionActions<cr>", { desc = "AI actions" })
 map("n", "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "Toggle AI chat" })
 map("v", "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "Toggle AI chat" })
-map("n", "<leader>ai", "<cmd>CodeCompanion<cr>", { desc = "Inline AI" })
-map("v", "<leader>ai", "<cmd>CodeCompanion<cr>", { desc = "Inline AI" })
+map("n", "<leader>a-", "<cmd>CodeCompanion<cr>", { desc = "Inline AI" })
+map("v", "<leader>a-", "<cmd>CodeCompanion<cr>", { desc = "Inline AI" })
 map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { desc = "Add to AI chat" })
 
 -- Quick AI prompts

@@ -1,443 +1,391 @@
-# NvimRC - Personal Neovim Configuration
+# NvimRC - Modern Neovim Configuration
 
-A highly customized Neovim configuration built on NvChad v2.5, featuring extensive plugin integrations, AI-powered coding assistance, and carefully crafted keybindings for an enhanced development experience.
+<div align="center">
 
-## Overview
+![Neovim](https://img.shields.io/badge/Neovim-0.10+-green.svg?style=for-the-badge&logo=neovim)
+![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey?style=for-the-badge)
 
-This configuration transforms Neovim into a powerful, modern IDE while maintaining the speed and efficiency that makes Vim-based editors exceptional. It includes intelligent code completion, LSP integration for multiple languages, debugging capabilities, AI assistance through CodeCompanion, and numerous quality-of-life improvements.
+**A powerful, modern Neovim configuration built on NvChad v2.5**
 
-## Installation
+Featuring intelligent keymaps, context-aware menus, AI assistance, and extensive plugin integration for an enhanced development experience.
+
+[Features](#-features) • [Installation](#-installation) • [Documentation](#-documentation) • [Keybindings](#-keybindings) • [Customization](#-customization)
+
+</div>
+
+---
+
+## ✨ Features
+
+### 🎯 Core Capabilities
+
+- **🧠 Intelligent Keymap System** - Modular keymap architecture using `mini.keymap` for smart context-aware bindings
+- **📋 Context-Aware Menus** - Right-click menus that adapt to your current context (file type, git repo, debug mode, etc.)
+- **🤖 AI Integration** - Built-in CodeCompanion with OpenRouter API support for AI-assisted coding
+- **🎨 10 Custom Themes** - Carefully crafted color schemes including Dracula Pro, Monokai Pro, Aurora, and more
+- **⚡ Blazing Fast** - Optimized lazy-loading with <50ms startup time
+
+### 🛠️ Development Tools
+
+- **LSP Support** - Pre-configured for HTML, CSS, JavaScript/TypeScript, Python, Rust, Java, Lua
+- **Code Formatting** - Automatic formatting with Conform.nvim (Prettier, Black, Stylua, etc.)
+- **Git Integration** - LazyGit UI, inline Gitsigns, and comprehensive git operations
+- **Debugging** - Full DAP integration with nvim-dap and dap-ui
+- **Live Development** - Built-in live server for web development
+- **Terminal Management** - Smart terminal handling with multiple layouts and runners
+
+### 🎨 UI & Experience
+
+- **Smart Completion** - Blink.cmp with intelligent Tab/Enter behavior
+- **Flash Navigation** - Lightning-fast cursor movement with flash.nvim
+- **Color Tools** - Interactive color pickers (Huefy) and shade generators
+- **Markdown Support** - Full Obsidian integration with live preview
+- **Focus Modes** - Zen mode and Twilight for distraction-free coding
+- **Beautiful Notifications** - Modern UI with Noice.nvim and nvim-notify
+
+---
+
+## 📦 Installation
 
 ### Prerequisites
 
-- **Neovim** version 0.10.0 or higher
-- **Git** for version control
-- **Nerd Font** installed and configured in your terminal
-- **Node.js and npm** for LSP servers and live-server
-- **Ripgrep (rg)** for enhanced search capabilities
-- **Python, Rust, Java** runtimes for respective language servers
+Ensure you have the following installed:
 
-### Installation Steps
+- **Neovim** 0.10.0 or higher
+- **Git** for version control
+- **Node.js** and npm (for LSP servers and live-server)
+- **Ripgrep** (rg) for enhanced search
+- A **Nerd Font** (recommended: JetBrainsMono, FiraCode, or Hack)
+- **Python**, **Rust**, **Java** runtimes (for respective language servers)
+
+### Quick Start
 
 1. **Clone the repository:**
-```bash
-git clone https://github.com/M4ikel79/nvimrc.git ~/.config/nvimrc
-```
+
+   ```bash
+   git clone https://github.com/M4ikel79/nvimrc.git ~/.config/nvimrc
+   ```
 
 2. **Set up shell alias:**
 
-Add to your `~/.bashrc` or `~/.zshrc`:
-```bash
-alias vi='NVIM_APPNAME=nvimrc nvim'
-```
+   Add to your `~/.bashrc` or `~/.zshrc`:
 
-3. **Reload your shell:**
-```bash
-source ~/.bashrc  # or source ~/.zshrc
-```
+   ```bash
+   alias vi='NVIM_APPNAME=nvimrc nvim'
+   ```
+
+3. **Reload shell configuration:**
+
+   ```bash
+   source ~/.bashrc  # or source ~/.zshrc
+   ```
 
 4. **Launch Neovim:**
-```bash
-vi
+
+   ```bash
+   vi
+   ```
+
+   On first launch, lazy.nvim will automatically install all plugins. This may take a few minutes.
+
+5. **Configure AI Assistant (Optional):**
+
+   If you want to use the AI features:
+
+   ```bash
+   export OPENROUTER_API_KEY="your-api-key-here"
+   ```
+
+---
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the `docs/` directory:
+
+| Document                                         | Description                                            |
+| ------------------------------------------------ | ------------------------------------------------------ |
+| **[Installation Guide](docs/installation.md)**   | Detailed installation instructions and troubleshooting |
+| **[Keybindings Reference](docs/keybindings.md)** | Complete keymap documentation with examples            |
+| **[Menu System](docs/menus.md)**                 | Context-aware menu system guide                        |
+| **[Plugin Guide](docs/plugins.md)**              | Overview of all installed plugins                      |
+| **[Theme Gallery](docs/themes.md)**              | Preview and customize themes                           |
+| **[LSP Configuration](docs/lsp.md)**             | Language server setup and configuration                |
+| **[Options Reference](docs/options.md)**         | Vim options and settings explained                     |
+| **[Customization Guide](docs/customization.md)** | How to customize and extend                            |
+| **[FAQ](docs/faq.md)**                           | Frequently asked questions                             |
+
+---
+
+## ⌨️ Keybindings
+
+### Quick Reference
+
+Leader key is `<Space>`
+
+#### Essential Bindings
+
+| Key            | Action               | Context       |
+| -------------- | -------------------- | ------------- |
+| `<Space>ff`    | Find files           | Normal        |
+| `<Space>fw`    | Live grep            | Normal        |
+| `<C-n>`        | Toggle file explorer | Normal        |
+| `<C-Space>`    | Context menu         | Normal/Visual |
+| `<RightMouse>` | Context menu         | Normal/Visual |
+| `<Space>gg`    | LazyGit              | Normal        |
+| `<Space>aa`    | AI actions           | Normal/Visual |
+| `<Space>cf`    | Format buffer        | Normal/Visual |
+| `gd`           | Go to definition     | Normal        |
+| `K`            | Hover documentation  | Normal        |
+
+#### Buffer Navigation
+
+| Key                    | Action               |
+| ---------------------- | -------------------- |
+| `<Alt-,>` / `<Alt-.>`  | Previous/Next buffer |
+| `<Alt-1>` to `<Alt-9>` | Jump to buffer 1-9   |
+| `<Alt-0>`              | Last buffer          |
+| `<Alt-c>`              | Close buffer         |
+| `<C-p>`                | Buffer picker        |
+
+#### Window Management
+
+| Key                | Action           |
+| ------------------ | ---------------- |
+| `<C-h/j/k/l>`      | Navigate windows |
+| `<Alt-Up/Down>`    | Resize height    |
+| `<Alt-Left/Right>` | Resize width     |
+| `<Space>-`         | Split below      |
+| `<Space>\|`        | Split right      |
+
+For complete keybinding documentation, see **[Keybindings Reference](docs/keybindings.md)**.
+
+---
+
+## 🎨 Themes
+
+NvimRC includes 10 custom themes:
+
+| Theme              | Type  | Description                             |
+| ------------------ | ----- | --------------------------------------- |
+| **Dracula Pro**    | Dark  | Classic Dracula Pro with vibrant colors |
+| **Monokai Pro**    | Dark  | Warm Monokai Pro variant                |
+| **Aurora**         | Dark  | Pink/Purple aurora borealis inspired    |
+| **Tokyo Rain**     | Dark  | Neon-lit rainy Tokyo night              |
+| **Ocean Depths**   | Dark  | Deep blue/teal ocean theme              |
+| **Cyberpunk Neon** | Dark  | Bright cyberpunk neon colors            |
+| **Matrix Code**    | Dark  | Green terminal matrix style             |
+| **Retro Wave**     | Dark  | 80s synthwave aesthetic                 |
+| **Volcanic Ash**   | Dark  | Red/orange volcanic colors              |
+| **Cherry Blossom** | Light | Soft Japanese sakura inspired           |
+| **Pastel Dream**   | Light | Soft pastel colors                      |
+
+**Switch themes:** `<Space>th` (theme selector) or `<Space>tt` (toggle between configured themes)
+
+See **[Theme Gallery](docs/themes.md)** for screenshots and customization.
+
+---
+
+## 🔧 Customization
+
+### Quick Customization
+
+**Edit configuration:**
+
+```vim
+:e ~/.config/nvimrc/init.lua
 ```
 
-On first launch, lazy.nvim will automatically install all plugins. This may take a few minutes.
+**Key areas to customize:**
 
-## Core Features
+1. **Keymaps** - `lua/keymaps/` directory
+2. **Plugin options** - `lua/plugins/` directory
+3. **LSP servers** - `lua/configs/lspconfig.lua`
+4. **Formatters** - `lua/configs/conform.lua`
+5. **Theme settings** - `lua/chadrc.lua`
+6. **Options** - `lua/options.lua`
 
-### Language Support
-
-**Pre-configured LSP servers:**
-- HTML, CSS, Emmet (web development)
-- Rust (rust-analyzer)
-- Java (jdtls)
-- JavaScript/TypeScript (tsserver)
-- Python (pyright)
-
-**Formatters:**
-- Stylua (Lua)
-- Black + isort (Python)
-- Prettier/Prettierd (web technologies)
-- Rustfmt (Rust)
-- Google Java Format (Java)
-
-### Smart Key Mappings
-
-**Insert Mode Intelligence:**
-- `Tab` - Navigate completion menu or insert tab
-- `Shift-Tab` - Navigate completion backwards
-- `Enter` - Accept completion or insert newline
-- `jk` / `kj` - Quick escape to normal mode
-
-### Navigation
-
-**Buffer Navigation:**
-- `Alt-,` / `Alt-.` - Previous/Next buffer
-- `Alt-1` through `Alt-9` - Jump to specific buffer
-- `Alt-0` - Last buffer
-- `Alt-c` - Close current buffer
-- `Ctrl-p` - Fuzzy buffer picker
-
-**Window Navigation:**
-- `Ctrl-h/j/k/l` - Navigate between windows (tmux compatible)
-- `Ctrl-Up/Down` - Resize height
-- `Ctrl-Left/Right` - Resize width
-
-### Essential Keybindings
-
-#### Leader Key Mappings
-
-| Prefix | Category | Example |
-|--------|----------|---------|
-| `<leader>b` | Buffer operations | `<leader>bd` - Delete buffer |
-| `<leader>c` | Code operations | `<leader>cf` - Format code |
-| `<leader>d` | Debugging (DAP) | `<leader>db` - Toggle breakpoint |
-| `<leader>f` | Find/Search (Telescope) | `<leader>ff` - Find files |
-| `<leader>g` | Git operations | `<leader>gg` - LazyGit |
-| `<leader>l` | LSP operations | `<leader>la` - Code actions |
-| `<leader>n` | Notifications | `<leader>nh` - Notification history |
-| `<leader>s` | Search/Replace | `<leader>sk` - Show keys |
-| `<leader>t` | Tab management | `<leader>tn` - New tab |
-| `<leader>u` | UI toggles | `<leader>ut` - Toggle theme |
-| `<leader>x` | Diagnostics (Trouble) | `<leader>xx` - Document diagnostics |
-| `<leader>z` | Zen/Focus modes | `<leader>z` - Zen mode |
-| `<leader>a` | AI (CodeCompanion) | `<leader>aa` - AI actions |
-
-#### Motion and Editing
-
-- `s` - Flash jump (quick navigation)
-- `S` - Flash treesitter jump
-- `gsa` - Add surrounding (mini.surround)
-- `gsd` - Delete surrounding
-- `gsr` - Replace surrounding
-- `Shift-h/j/k/l` - Move lines/visual selection
-
-### AI Integration (CodeCompanion)
-
-Configure your OpenRouter API key:
-```bash
-export OPENROUTER_API_KEY="your-key-here"
-```
-
-**AI Commands:**
-- `<leader>aa` - AI actions menu
-- `<leader>ac` - Toggle AI chat
-- `<leader>ai` - Inline AI completion
-- `ga` (visual mode) - Add selection to AI chat
-
-### Development Tools
-
-**Git Integration:**
-- `<leader>gg` - LazyGit interface
-- `<leader>gl` - Git log
-- `<leader>gf` - File history
-- Inline change indicators via gitsigns
-
-**Live Server:**
-- `<leader>ls` - Start development server
-- `<leader>lS` - Stop server
-
-**Debugging (DAP):**
-- `<leader>dc` - Continue/Start
-- `<leader>db` - Toggle breakpoint
-- `<leader>di/o/O` - Step into/over/out
-- `<leader>du` - Toggle debug UI
-
-**Diagnostics (Trouble):**
-- `<leader>xx` - Document diagnostics
-- `<leader>xq` - Quickfix list
-- `]q` / `[q` - Next/Previous quickfix
-
-### Focus Modes
-
-- `<leader>z` - Zen Mode (distraction-free)
-- `<leader>zf` - Twilight (dim surrounding code)
-
-### Theme Management
-
-**Default Themes:**
-- bearded-arc (default)
-- Dracula Pro (custom)
-- Monokai Pro (custom)
-
-**Theme Commands:**
-- `<leader>uh` - Open theme selector
-- `<leader>ut` - Toggle between configured themes
-- `<leader>ui` - Toggle transparency
-
-## Plugin Highlights
-
-### Editor Enhancements
-- **flash.nvim** - Lightning-fast cursor movement
-- **mini.nvim** - Swiss army knife (surround, move, align, ai, splitjoin)
-- **nvim-origami** - Intelligent code folding with LSP
-- **vim-visual-multi** - Multiple cursors support
-- **nvim-ts-autotag** - Auto-close and rename HTML/JSX tags
-
-### Code Intelligence
-- **nvim-lspconfig** - LSP client configurations
-- **conform.nvim** - Code formatting
-- **nvim-treesitter** - Advanced syntax highlighting
-- **codecompanion.nvim** - AI coding assistant
-
-### UI Improvements
-- **noice.nvim** - Modern UI for messages and cmdline
-- **nvim-notify** - Beautiful notifications
-- **which-key.nvim** - Keybinding discovery
-- **trouble.nvim** - Pretty diagnostics list
-
-### Utilities
-- **lazygit.nvim** - Git TUI integration
-- **live-server.nvim** - Local development server
-- **nvim-dap** - Debug adapter protocol
-- **telescope.nvim** - Fuzzy finder (via NvChad)
-
-## Customization
-
-### Adding LSP Servers
-
-Edit `lua/configs/lspconfig.lua` and add your server to the `servers` table:
+### Adding Custom Keymaps
 
 ```lua
-local servers = {
-  -- existing servers...
-  your_server = {
-    settings = {
-      -- server-specific settings
-    },
-  },
-}
-```
-
-Install the server via Mason: `:Mason`
-
-### Adding Formatters
-
-Edit `lua/configs/conform.lua`:
-
-```lua
-formatters_by_ft = {
-  your_filetype = { "your_formatter" },
-}
-```
-
-Install the formatter via Mason: `:Mason`
-
-### Disabling Format on Save
-
-For specific buffers:
-```vim
-:FormatDisable
-```
-
-For all buffers:
-```vim
-:FormatDisable!
-```
-
-Re-enable:
-```vim
-:FormatEnable
-```
-
-### Custom Keybindings
-
-Add your keybindings to `lua/mappings.lua`:
-
-```lua
+-- lua/keymaps/custom.lua
 local map = vim.keymap.set
 
 map("n", "<your-key>", "<your-action>", { desc = "Description" })
 ```
 
-### Adding Plugins
-
-Create a new file in `lua/plugins/` directory:
+Then require it in `lua/keymaps/init.lua`:
 
 ```lua
--- lua/plugins/your-plugin.lua
+require "keymaps.custom"
+```
+
+### Adding Plugins
+
+Create a new file in `lua/plugins/`:
+
+```lua
+-- lua/plugins/my-plugin.lua
 return {
   "author/plugin-name",
-  event = "VeryLazy",  -- or other loading trigger
+  event = "VeryLazy",
   opts = {
     -- plugin options
   },
 }
 ```
 
-## File Structure
+See **[Customization Guide](docs/customization.md)** for detailed instructions.
+
+---
+
+## 📁 Project Structure
 
 ```
 ~/.config/nvimrc/
-├── init.lua                    # Entry point
+├── init.lua                 # Entry point
+├── stylua.toml             # Lua formatter config
 ├── lua/
-│   ├── options.lua            # Neovim options
-│   ├── autocmds.lua           # Autocommands
-│   ├── mappings.lua           # Keybindings
-│   ├── chadrc.lua             # NvChad configuration
-│   ├── configs/               # Plugin configurations
+│   ├── options.lua         # Neovim options
+│   ├── autocmds.lua        # Autocommands
+│   ├── chadrc.lua          # NvChad configuration
+│   ├── configs/            # Plugin configurations
 │   │   ├── lazy.lua
 │   │   ├── lspconfig.lua
 │   │   ├── conform.lua
-│   │   └── companion.lua
-│   ├── plugins/               # Plugin specifications
+│   │   ├── companion.lua
+│   │   └── menu_manager.lua
+│   ├── keymaps/            # Modular keymaps
 │   │   ├── init.lua
-│   │   ├── flash.lua
-│   │   ├── mini.lua
-│   │   └── ...
-│   ├── themes/                # Custom themes
-│   │   ├── dracula-pro.lua
-│   │   └── monokai-pro.lua
-│   └── utils/                 # Utility functions
+│   │   ├── core.lua        # Core editing
+│   │   ├── lsp.lua         # LSP operations
+│   │   ├── git.lua         # Git operations
+│   │   ├── term.lua        # Terminal
+│   │   ├── colors.lua      # Color tools
+│   │   ├── plugins.lua     # Plugin-specific
+│   │   └── utils.lua       # Utilities
+│   ├── plugins/            # Plugin specifications
+│   │   ├── init.lua
+│   │   ├── coding/         # Completion, LSP, etc.
+│   │   ├── editor/         # Navigation, editing
+│   │   ├── tools/          # Git, debug, etc.
+│   │   └── ui/             # UI enhancements
+│   ├── menus/              # Context menus
+│   │   ├── main.lua
+│   │   ├── git.lua
+│   │   ├── debug.lua
+│   │   ├── colors.lua
+│   │   ├── markdown.lua
+│   │   └── webdev.lua
+│   ├── themes/             # Custom themes
+│   │   ├── dracula_pro.lua
+│   │   ├── monokai_pro.lua
+│   │   └── [8 more themes]
+│   └── utils/              # Utility functions
 │       ├── buffers.lua
 │       └── code_folds.lua
-└── stylua.toml                # Lua formatter config
+└── docs/                   # Documentation
+    ├── installation.md
+    ├── keybindings.md
+    ├── menus.md
+    └── [more docs]
 ```
 
-## Performance
+---
 
-**Startup Time:** < 50ms (core loading)
-**Full Load:** < 100ms (with lazy-loading)
+## 🚀 Performance
 
-**Optimization Features:**
+- **Startup Time:** < 50ms (core loading)
+- **Full Load:** < 100ms (with lazy-loading)
+- **Plugin Count:** 60+ (all lazy-loaded)
+- **Memory Usage:** ~80MB (after startup)
+
+**Optimization features:**
+
 - Lazy-loading for all non-essential plugins
 - Event-based plugin initialization
 - Disabled unnecessary default Vim plugins
-- Minimal statusline and UI overhead
+- Minimal statusline overhead
 
-## Troubleshooting
+---
 
-### Plugins Not Loading
+## 🤝 Contributing
+
+Contributions are welcome! This is a personal configuration, but improvements and suggestions are appreciated.
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Plugins not loading:**
 
 ```vim
 :Lazy sync
 :Lazy profile
 ```
 
-### LSP Issues
+**LSP not working:**
 
 ```vim
 :LspInfo
 :Mason
 ```
 
-Check language server installation and file type associations.
-
-### Formatting Not Working
-
-1. Verify formatter is installed: `:Mason`
-2. Check configuration: `:ConformInfo`
-3. Test manual formatting: `<leader>cf`
-4. Check format-on-save status
-
-### Keybinding Conflicts
+**Formatting issues:**
 
 ```vim
-:verbose map <your-key>
+:ConformInfo
 ```
 
-Shows all mappings for the key and where they're defined.
-
-### General Diagnostics
+**General diagnostics:**
 
 ```vim
 :checkhealth
 ```
 
-Provides comprehensive system diagnostics.
+For more help, see **[FAQ](docs/faq.md)** or open an issue.
 
-## Commands Reference
+---
 
-### Plugin Management
-- `:Lazy` - Plugin manager UI
-- `:Lazy sync` - Update all plugins
-- `:Lazy clean` - Remove unused plugins
-- `:Mason` - LSP/formatter installer
+## 📝 Acknowledgments
 
-### LSP
-- `:LspInfo` - Show LSP status
-- `:LspRestart` - Restart LSP servers
+Built on the shoulders of giants:
 
-### Formatting
-- `:ConformInfo` - Show formatter info
-- `:FormatDisable` / `:FormatEnable` - Toggle format-on-save
+- [NvChad](https://github.com/NvChad/NvChad) - Excellent base configuration
+- [lazy.nvim](https://github.com/folke/lazy.nvim) - Modern plugin manager
+- [mini.nvim](https://github.com/echasnovski/mini.nvim) - Swiss army knife
+- All plugin authors whose amazing work makes this possible
 
-### Debugging
-- `:DapContinue` - Start/continue debugging
-- `:DapToggleBreakpoint` - Toggle breakpoint
+Special thanks to the Neovim community for continuous inspiration.
 
-### Theme
-- `<leader>uh` - Theme selector
-- `<leader>ut` - Toggle theme
-- `<leader>ui` - Toggle transparency
+---
 
-## Tips and Tricks
-
-### Quick Navigation
-1. Use `s` + two characters to jump anywhere on screen
-2. Use `Alt-1` through `Alt-9` for instant buffer switching
-3. Use `<leader>ff` for fuzzy file finding
-4. Use `gd` to jump to definition (LSP)
-
-### Efficient Editing
-1. Use `gsa"` to add quotes around text
-2. Use `Shift-j/k` to move lines up/down
-3. Use `<leader>cf` to format entire file
-4. Use `Ctrl-q` to start multiple cursors
-
-### Git Workflow
-1. Use `<leader>gg` for full Git UI (lazygit)
-2. Use gitsigns bracket commands `]c` / `[c` for hunk navigation
-3. Use `<leader>gf` to see file history
-
-### Focus and Productivity
-1. Use `<leader>z` for distraction-free writing
-2. Use `<leader>zf` to dim surrounding code
-3. Use `<leader>sk` to see your keypresses (for recording)
-
-## Known Issues
-
-### Windows Compatibility
-Long file paths may cause issues. Enable git longpaths:
-```bash
-git config --system core.longpaths true
-```
-
-### Terminal Emulator
-Ensure your terminal supports:
-- True color (24-bit)
-- Nerd Font rendering
-- Alt/Meta key bindings
-
-### Node.js Requirement
-Some features require Node.js:
-- LSP servers (tsserver, emmet-ls)
-- Live-server
-- Some formatters (prettier)
-
-## Contributing
-
-This is a personal configuration, but suggestions and improvements are welcome!
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## Acknowledgments
-
-Built on the excellent foundation of:
-- [NvChad](https://github.com/NvChad/NvChad) - Base configuration framework
-- [lazy.nvim](https://github.com/folke/lazy.nvim) - Plugin manager
-- All plugin authors whose work makes this possible
-
-## License
+## 📄 License
 
 This configuration is free to use and modify for personal use.
 
 ---
 
-**Happy Coding with NvimRC!**
+## 🔗 Links
 
-For more information, see `:help nvimrc` or explore the `lua/` directory.
+- **Repository:** [github.com/M4ikel79/nvimrc](https://github.com/M4ikel79/nvimrc)
+- **Issues:** [Report a bug](https://github.com/M4ikel79/nvimrc/issues)
+- **Discussions:** [Join the conversation](https://github.com/M4ikel79/nvimrc/discussions)
+
+---
+
+<div align="center">
+
+**Happy Coding with NvimRC! 🚀**
+
+Made with ❤️ by [M4ikel79](https://github.com/M4ikel79)
+
+</div>

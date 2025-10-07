@@ -142,16 +142,11 @@ return {
 
   { name = "separator" },
 
+  -- AI Assistant submenu
   {
     name = "󰚩 AI Assistant",
     hl = "ExCyan",
     items = {
-      -- CodeCompanion section
-      {
-        name = " CodeCompanion",
-        title = true,
-        hl = "ExCyan",
-      },
       {
         name = "Code Actions",
         cmd = "CodeCompanionActions",
@@ -203,65 +198,6 @@ return {
             vim.api.nvim_feedkeys("Add documentation to this code", "n", false)
           end, 100)
         end,
-      },
-
-      { name = "separator" },
-
-      -- Copilot section (NEW)
-      {
-        name = " GitHub Copilot",
-        title = true,
-        hl = "ExBlue",
-      },
-      {
-        name = "Copilot Panel",
-        cmd = "Copilot panel",
-        rtxt = "<leader>aip",
-      },
-      {
-        name = "Copilot Status",
-        cmd = "Copilot status",
-        rtxt = "<leader>ais",
-      },
-      {
-        name = "Toggle Copilot",
-        cmd = function()
-          if vim.g.copilot_enabled == false then
-            vim.cmd "Copilot enable"
-            vim.notify("Copilot enabled", vim.log.levels.INFO)
-          else
-            vim.cmd "Copilot disable"
-            vim.notify("Copilot disabled", vim.log.levels.INFO)
-          end
-        end,
-        rtxt = "<leader>ait",
-      },
-      { name = "separator" },
-      {
-        name = "Enable Copilot",
-        cmd = "Copilot enable",
-        rtxt = "<leader>aie",
-      },
-      {
-        name = "Disable Copilot",
-        cmd = "Copilot disable",
-        rtxt = "<leader>aid",
-      },
-      { name = "separator" },
-      {
-        name = "Setup Copilot",
-        cmd = "Copilot setup",
-        rtxt = "<leader>aiS",
-      },
-      {
-        name = "Sign Out",
-        cmd = "Copilot signout",
-        rtxt = "<leader>aio",
-      },
-      {
-        name = "Version Info",
-        cmd = "Copilot version",
-        rtxt = "<leader>aiv",
       },
     },
   },

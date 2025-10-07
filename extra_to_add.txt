@@ -1,0 +1,5 @@
+ Neotest.nvim in support to trouble
+ Copilot.vim
+ Neogit.nvim
+ Update the menu 
+ Update the keymaps

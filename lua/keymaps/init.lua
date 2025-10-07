@@ -11,6 +11,7 @@ require "keymaps.git"
 require "keymaps.term"
 require "keymaps.colors"
 require "keymaps.plugins"
+require "keymaps.copilot"
 
 -- Load utility functions
 local utils = require "keymaps.utils"
