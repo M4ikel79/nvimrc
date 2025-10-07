@@ -1,10 +1,22 @@
--- ============================================================================
 -- FILE: lua/menus/markdown.lua
--- DESCRIPTION: Markdown and Obsidian menu
--- ============================================================================
+-- Markdown and note-taking menu (Markdown, Obsidian)
 
 return {
-  -- Obsidian Notes
+  -- Preview
+  {
+    name = " Preview",
+    cmd = "MarkdownPreview",
+    rtxt = "<leader>mp",
+  },
+  {
+    name = " Stop Preview",
+    cmd = "MarkdownPreviewStop",
+    rtxt = "<leader>ms",
+  },
+
+  { name = "separator" },
+
+  -- Obsidian quick actions
   {
     name = " New Note",
     cmd = "ObsidianNew",
@@ -23,40 +35,46 @@ return {
 
   { name = "separator" },
 
-  -- Daily Notes
+  -- Daily notes
   {
     name = " Today's Note",
     cmd = "ObsidianToday",
     rtxt = "<leader>ot",
   },
-
-  { name = "separator" },
-
-  -- Markdown Preview
   {
-    name = " Preview",
-    cmd = "MarkdownPreview",
-    rtxt = "<leader>mp",
-  },
-  {
-    name = " Stop Preview",
-    cmd = "MarkdownPreviewStop",
-    rtxt = "<leader>ms",
+    name = " Yesterday",
+    cmd = "ObsidianYesterday",
+    rtxt = "<leader>oy",
   },
 
   { name = "separator" },
 
-  -- Standard Actions
+  -- Links
+  {
+    name = " Backlinks",
+    cmd = "ObsidianBacklinks",
+    rtxt = "<leader>ob",
+  },
+  {
+    name = " Toggle Checkbox",
+    cmd = function()
+      require("obsidian").util.toggle_checkbox()
+    end,
+    rtxt = "<leader>oc",
+  },
+
+  { name = "separator" },
+
+  -- Formatting
   {
     name = " Format",
     cmd = function()
-      local ok, conform = pcall(require, "conform")
-      if ok then
-        conform.format { async = true, lsp_fallback = true }
-      else
-        vim.lsp.buf.format()
-      end
+      require("conform").format { async = true, lsp_fallback = true }
     end,
-    rtxt = "<leader>cf",
+    rtxt = "<leader>fm",
+  },
+  {
+    name = " Insert Template",
+    cmd = "ObsidianTemplate",
   },
 }

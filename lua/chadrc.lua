@@ -1,6 +1,6 @@
 local options = {
   base46 = {
-    theme = "aylin",
+    theme = "material-deep-ocean",
     hl_add = {},
     hl_override = {
       Comment = { italic = true },
@@ -11,7 +11,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "blossom_light", "aylin" },
+    theme_toggle = { "blossom_light", "material-deep-ocean" },
   },
 
   ui = {

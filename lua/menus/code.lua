@@ -1,29 +1,8 @@
--- ============================================================================
 -- FILE: lua/menus/code.lua
--- DESCRIPTION: LSP and code-related actions menu
--- ============================================================================
+-- Programming-focused menu (Python, Lua, Rust, Go, Java)
 
 return {
-  -- LSP Navigation
-  {
-    name = " Go to Definition",
-    cmd = vim.lsp.buf.definition,
-    rtxt = "gd",
-  },
-  {
-    name = " Go to Declaration",
-    cmd = vim.lsp.buf.declaration,
-    rtxt = "gD",
-  },
-  {
-    name = " Show References",
-    cmd = "Telescope lsp_references",
-    rtxt = "gr",
-  },
-
-  { name = "separator" },
-
-  -- Code Actions
+  -- LSP essentials
   {
     name = "󰌵 Code Action",
     cmd = vim.lsp.buf.code_action,
@@ -32,24 +11,33 @@ return {
   {
     name = " Rename Symbol",
     cmd = vim.lsp.buf.rename,
-    rtxt = "<leader>cr",
+    rtxt = "<leader>rn",
   },
   {
-    name = " Format Buffer",
+    name = " Format",
     cmd = function()
-      local ok, conform = pcall(require, "conform")
-      if ok then
-        conform.format { async = true, lsp_fallback = true }
-      else
-        vim.lsp.buf.format()
-      end
+      require("conform").format { async = true, lsp_fallback = true }
     end,
-    rtxt = "<leader>cf",
+    rtxt = "<leader>fm",
+  },
+
+  { name = "separator" },
+
+  -- Quick navigation
+  {
+    name = " Definition",
+    cmd = vim.lsp.buf.definition,
+    rtxt = "gd",
   },
   {
-    name = " Hover Documentation",
-    cmd = vim.lsp.buf.hover,
-    rtxt = "K",
+    name = " References",
+    cmd = "Telescope lsp_references",
+    rtxt = "gr",
+  },
+  {
+    name = " Symbols",
+    cmd = "Telescope lsp_document_symbols",
+    rtxt = "<leader>ds",
   },
 
   { name = "separator" },
@@ -58,53 +46,104 @@ return {
   {
     name = " Show Diagnostics",
     cmd = "Trouble diagnostics toggle",
-    rtxt = "<leader>xx",
+    rtxt = "<leader>td",
   },
   {
-    name = " Next Diagnostic",
+    name = " Next Issue",
     cmd = vim.diagnostic.goto_next,
     rtxt = "]d",
   },
   {
-    name = " Previous Diagnostic",
+    name = " Previous Issue",
     cmd = vim.diagnostic.goto_prev,
     rtxt = "[d",
   },
 
   { name = "separator" },
 
-  -- Debugging
+  -- Run & Debug
+  {
+    name = " Run File",
+    cmd = function()
+      local runners = {
+        python = "python3 %",
+        lua = "lua %",
+        javascript = "node %",
+        typescript = "ts-node %",
+        rust = "cargo run",
+        go = "go run %",
+        java = "javac % && java %:t:r",
+      }
+      local ft = vim.bo.filetype
+      local cmd = runners[ft]
+      if cmd then
+        cmd = cmd:gsub("%%", vim.fn.expand "%:p")
+        require("nvchad.term").send(cmd, "horizontal")
+      end
+    end,
+    rtxt = "<F5>",
+  },
   {
     name = " Debug",
-    hl = "ExRed",
     items = {
       {
-        name = " Continue/Start",
+        name = " Start/Continue",
         cmd = function()
           require("dap").continue()
         end,
-        rtxt = "<leader>dc",
+        rtxt = "<F9>",
       },
       {
         name = " Toggle Breakpoint",
         cmd = function()
           require("dap").toggle_breakpoint()
         end,
-        rtxt = "<leader>db",
-      },
-      {
-        name = " Step Into",
-        cmd = function()
-          require("dap").step_into()
-        end,
-        rtxt = "<leader>di",
+        rtxt = "<F10>",
       },
       {
         name = " Step Over",
         cmd = function()
           require("dap").step_over()
         end,
-        rtxt = "<leader>do",
+        rtxt = "<F11>",
+      },
+      {
+        name = " Step Into",
+        cmd = function()
+          require("dap").step_into()
+        end,
+        rtxt = "<F12>",
+      },
+    },
+  },
+
+  { name = "separator" },
+
+  -- AI assistance
+  {
+    name = " AI Assistant",
+    items = {
+      {
+        name = "Explain Code",
+        cmd = "CodeCompanionChat",
+      },
+      {
+        name = "Fix Issues",
+        cmd = function()
+          vim.cmd "CodeCompanionChat"
+          vim.defer_fn(function()
+            vim.api.nvim_feedkeys("Fix the issues in this code", "n", false)
+          end, 100)
+        end,
+      },
+      {
+        name = "Add Documentation",
+        cmd = function()
+          vim.cmd "CodeCompanionChat"
+          vim.defer_fn(function()
+            vim.api.nvim_feedkeys("Add documentation to this code", "n", false)
+          end, 100)
+        end,
       },
     },
   },

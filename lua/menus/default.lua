@@ -1,9 +1,8 @@
--- ============================================================================
--- FILE: lua/menus/default.lua
--- DESCRIPTION: Default context menu (right-click fallback)
--- ============================================================================
+-- lua/menus/default.lua
+-- General-purpose menu for text editing
 
 return {
+  -- Essential editing
   {
     name = "󰌵 Code Action",
     cmd = vim.lsp.buf.code_action,
@@ -12,7 +11,7 @@ return {
   {
     name = " Rename",
     cmd = vim.lsp.buf.rename,
-    rtxt = "<leader>cr",
+    rtxt = "<leader>rn",
   },
   {
     name = " Format",
@@ -24,47 +23,36 @@ return {
         vim.lsp.buf.format()
       end
     end,
-    rtxt = "<leader>cf",
+    rtxt = "<leader>fm",
   },
 
   { name = "separator" },
 
+  -- Navigation
   {
-    name = " Go to Definition",
+    name = " Definition",
     cmd = vim.lsp.buf.definition,
     rtxt = "gd",
   },
   {
-    name = " Show References",
+    name = " References",
     cmd = "Telescope lsp_references",
     rtxt = "gr",
   },
 
   { name = "separator" },
 
-  {
-    name = " Copy Line",
-    cmd = "normal! yy",
-    rtxt = "yy",
-  },
-  {
-    name = " Copy Content",
-    cmd = "%y+",
-    rtxt = "%y+",
-  },
-
-  { name = "separator" },
-
+  -- Quick actions
   {
     name = " Find Files",
     cmd = "Telescope find_files",
     rtxt = "<leader>ff",
   },
   {
-    name = " Open Terminal",
+    name = " Terminal",
     cmd = function()
       require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
     end,
-    rtxt = "<leader>tf",
+    rtxt = "<C-\\>",
   },
 }
