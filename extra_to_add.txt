@@ -1,5 +1,24 @@
- Neotest.nvim in support to trouble
  Copilot.vim
  Neogit.nvim
- Update the menu 
+ Neotest.nvim in support to trouble
  Update the keymaps
+ Update the menu 
+Aerial.nvim is also nice for things that might require another form of understanding in a code file
+For CodeCompanion somethings are not needed as a keymap, probably best, with copilot, like explain, fix, or optimize the code. those keymaps that are not predefined by the plugin are not needed in a setup
+For Git and it's improvements Gitsigns, is something that we'll need and best if it had it's own spot on the menu.
+For txt files, ltex-ls(mason) and spellwarn, with prosesitter.nvim 
+I need you to scan all the files and directories i have provided you(do not leave a single one unturned ). let's say you want to fork my repo and add the plugins of the other documents and readme that i gave you. you basically want to make yours better, well structured with even the menu only showing what you need, the plugins and the setup still following that of nvchad's and so on.What will you do, add and want to accomplish
+Start with creating a keymaps directory structure and the planned keymaps for different actions, this way things won't be troublesome
+We will also add something that wasn't added, workspace-disagnostics
+https://github.com/NeogitOrg/neogit
+https://github.com/artemave/workspace-diagnostics.nvim
+https://github.com/dvdsk/prosesitter.nvim
+https://github.com/gbprod/yanky.nvim
+https://github.com/nvim-neotest/neotest
+https://github.com/ravibrock/spellwarn.nvim
+https://github.com/sindrets/diffview.nvim
+https://github.com/zbirenbaum/copilot.lua
+https://github.com/stevearc/aerial.nvim
+
+Make tab to be used for moving through the blink completion (Insert mode) and enter (C-m) to be used for selecting the completion, i tend to have issues with the plugins sometimes when i need to select and i click enter it creates a new line instead of picking the selection
+My terminal (nvchad's) tends to be affected by the treesitter, by also adding a line at the left side of the terminal

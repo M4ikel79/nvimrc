@@ -1,6 +1,6 @@
 local options = {
   base46 = {
-    theme = "catppuccin",
+    theme = "ayu_dark",
     hl_add = {},
     hl_override = {
       Comment = { italic = true },
@@ -11,7 +11,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "blossom_light", "catppuccin" },
+    theme_toggle = { "blossom_light", "ayu_dark" },
   },
 
   ui = {

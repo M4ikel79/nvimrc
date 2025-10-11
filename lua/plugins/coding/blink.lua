@@ -3,7 +3,10 @@ return {
   import = "nvchad.blink.lazyspec",
   "saghen/blink.cmp",
   lazy = false,
-  dependencies = "rafamadriz/friendly-snippets",
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+    "zbirenbaum/copilot.lua",
+  },
   version = "v0.*",
   opts = {
     keymap = {
